@@ -470,7 +470,7 @@ namespace CompareBases
         }
 
 
-        private void SetTbExecText(string text, SQLObject SQLObj)
+        private void SetTbExecText(string text, SQLObject SQLObj, bool isAlter = false)
         {
             /*
             //т.к. не учитываются комментарии строк, то поиск и разбитие по GO происходит только в первых 5 строках
@@ -499,10 +499,23 @@ namespace CompareBases
                     : SQLObj.TypeMark == "V " ? "view"
                     : null;
             if (typeObj != null)
-                text = string.Format("if object_id('{0}') is not null drop {1} {0}" + TempGO
-                    , SQLObj.SQLName
-                    , typeObj) 
-                    + text;
+            {
+                if (isAlter)
+                {
+                    var iCreate = text.IndexOf("CREATE", StringComparison.InvariantCultureIgnoreCase);
+                    if (iCreate >= 0 && iCreate < 200)
+                    {
+                        text = text.Substring(0, iCreate) + "ALTER" + text.Substring(iCreate + 6);
+                    }
+                }
+                else
+                {
+                    text = string.Format("if object_id('{0}') is not null drop {1} {0}" + TempGO
+                        , SQLObj.SQLName
+                        , typeObj)
+                        + text;
+                }
+            }
                 
             tbExec.Text = text;
         }
@@ -512,7 +525,7 @@ namespace CompareBases
             ActionDoubleClick(radioButton1.Checked);
         }
 
-        private void ActionDoubleClick(bool openFile, bool openFolder = false, bool copyBuffer = false)
+        private void ActionDoubleClick(bool openFile, bool openFolder = false, bool copyBuffer = false, bool isAlter = false)
         {
             var cell = dataGridView.CurrentCell;
             if (cell == null) return;
@@ -548,7 +561,7 @@ namespace CompareBases
                         }
                         else
                         {
-                            SetTbExecText(File.ReadAllText(fn), obj);
+                            SetTbExecText(File.ReadAllText(fn), obj, isAlter);
                             labelProgress.Text = "Текст во вкладке Применить: " + obj.SQLName + "  (с репозитория)";
                         }
                     }
@@ -590,7 +603,7 @@ namespace CompareBases
                         }
                         else
                         {
-                            SetTbExecText(obj.Source, obj);
+                            SetTbExecText(obj.Source, obj, isAlter);
                             labelProgress.Text = "Текст во вкладке Применить: " + obj.SQLName + "  (вариант с" + cellCO.BasesString + ")";
                         }
                     }
@@ -899,6 +912,11 @@ namespace CompareBases
         {
 
             ActionDoubleClick(false, false, true);
+        }
+
+        private void toolStripMenuToAppAlter_Click(object sender, EventArgs e)
+        {
+            ActionDoubleClick(false, false, false, true);
         }
 
         private void butTextClear_Click(object sender, EventArgs e)

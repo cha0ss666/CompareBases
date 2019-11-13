@@ -87,6 +87,7 @@
             this.перейтиКФайлуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemSVNLog = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonExec2 = new System.Windows.Forms.Button();
+            this.toolStripMenuToAppAlter = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -693,6 +694,7 @@
             this.dataGridViewMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuComp,
             this.toolStripMenuToApp,
+            this.toolStripMenuToAppAlter,
             this.toolStripMenuBases,
             this.toolStripMenuItem1,
             this.toolStripMenuItem2,
@@ -700,7 +702,7 @@
             this.перейтиКФайлуToolStripMenuItem,
             this.toolStripMenuItemSVNLog});
             this.dataGridViewMenuStrip.Name = "dataGridViewMenuStrip";
-            this.dataGridViewMenuStrip.Size = new System.Drawing.Size(232, 164);
+            this.dataGridViewMenuStrip.Size = new System.Drawing.Size(232, 208);
             // 
             // toolStripMenuComp
             // 
@@ -771,6 +773,13 @@
             this.buttonExec2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonExec2.UseVisualStyleBackColor = false;
             this.buttonExec2.Click += new System.EventHandler(this.buttonExec_Click);
+            // 
+            // toolStripMenuToAppAlter
+            // 
+            this.toolStripMenuToAppAlter.Name = "toolStripMenuToAppAlter";
+            this.toolStripMenuToAppAlter.Size = new System.Drawing.Size(231, 22);
+            this.toolStripMenuToAppAlter.Text = "  тоже с ALTER";
+            this.toolStripMenuToAppAlter.Click += new System.EventHandler(this.toolStripMenuToAppAlter_Click);
             // 
             // Form1
             // 
@@ -872,6 +881,7 @@
         private System.Windows.Forms.Button butTextClear;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSVNLog;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuToAppAlter;
     }
 }
 
