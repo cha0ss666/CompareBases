@@ -1,3 +1,5 @@
 /.vs
 /CompareBases/bin
 /CompareBases/obj
+/packages
+/CompareBases/CompareBases.csproj.user
