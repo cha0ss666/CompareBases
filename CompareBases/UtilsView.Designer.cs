@@ -43,14 +43,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.butAddConStr = new System.Windows.Forms.Button();
             this.butTest = new System.Windows.Forms.Button();
+            this.cbPostGreSql = new System.Windows.Forms.CheckBox();
             this.groupBoxComp1.SuspendLayout();
             this.SuspendLayout();
             // 
             // butDBsFromMS
             // 
-            this.butDBsFromMS.Location = new System.Drawing.Point(14, 14);
+            this.butDBsFromMS.Location = new System.Drawing.Point(19, 17);
+            this.butDBsFromMS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.butDBsFromMS.Name = "butDBsFromMS";
-            this.butDBsFromMS.Size = new System.Drawing.Size(226, 23);
+            this.butDBsFromMS.Size = new System.Drawing.Size(301, 28);
             this.butDBsFromMS.TabIndex = 0;
             this.butDBsFromMS.Text = "Получить базы из SQL Multy Script";
             this.butDBsFromMS.UseVisualStyleBackColor = true;
@@ -61,9 +63,10 @@
             this.checkBoxDBsFromMSSokr.AutoSize = true;
             this.checkBoxDBsFromMSSokr.Checked = true;
             this.checkBoxDBsFromMSSokr.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDBsFromMSSokr.Location = new System.Drawing.Point(246, 18);
+            this.checkBoxDBsFromMSSokr.Location = new System.Drawing.Point(328, 22);
+            this.checkBoxDBsFromMSSokr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDBsFromMSSokr.Name = "checkBoxDBsFromMSSokr";
-            this.checkBoxDBsFromMSSokr.Size = new System.Drawing.Size(116, 17);
+            this.checkBoxDBsFromMSSokr.Size = new System.Drawing.Size(145, 21);
             this.checkBoxDBsFromMSSokr.TabIndex = 1;
             this.checkBoxDBsFromMSSokr.Text = "Сокращать слова";
             this.checkBoxDBsFromMSSokr.UseVisualStyleBackColor = true;
@@ -73,9 +76,10 @@
             this.checkBoxDBsFromMSWithBase.AutoSize = true;
             this.checkBoxDBsFromMSWithBase.Checked = true;
             this.checkBoxDBsFromMSWithBase.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDBsFromMSWithBase.Location = new System.Drawing.Point(368, 18);
+            this.checkBoxDBsFromMSWithBase.Location = new System.Drawing.Point(491, 22);
+            this.checkBoxDBsFromMSWithBase.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDBsFromMSWithBase.Name = "checkBoxDBsFromMSWithBase";
-            this.checkBoxDBsFromMSWithBase.Size = new System.Drawing.Size(109, 17);
+            this.checkBoxDBsFromMSWithBase.Size = new System.Drawing.Size(134, 21);
             this.checkBoxDBsFromMSWithBase.TabIndex = 2;
             this.checkBoxDBsFromMSWithBase.Text = "Указывать базу";
             this.checkBoxDBsFromMSWithBase.UseVisualStyleBackColor = true;
@@ -84,6 +88,7 @@
             // 
             this.groupBoxComp1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxComp1.Controls.Add(this.cbPostGreSql);
             this.groupBoxComp1.Controls.Add(this.buttonSave);
             this.groupBoxComp1.Controls.Add(this.checkBoxCompareTableWithTrigger);
             this.groupBoxComp1.Controls.Add(this.checkBoxCompareWithTable);
@@ -93,18 +98,21 @@
             this.groupBoxComp1.Controls.Add(this.textBoxIPref);
             this.groupBoxComp1.Controls.Add(this.textBoxPrefix);
             this.groupBoxComp1.Controls.Add(this.label1);
-            this.groupBoxComp1.Location = new System.Drawing.Point(3, 43);
+            this.groupBoxComp1.Location = new System.Drawing.Point(4, 53);
+            this.groupBoxComp1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBoxComp1.Name = "groupBoxComp1";
-            this.groupBoxComp1.Size = new System.Drawing.Size(994, 344);
+            this.groupBoxComp1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxComp1.Size = new System.Drawing.Size(1325, 423);
             this.groupBoxComp1.TabIndex = 18;
             this.groupBoxComp1.TabStop = false;
             this.groupBoxComp1.Text = "Настройки сравнения";
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(778, 310);
+            this.buttonSave.Location = new System.Drawing.Point(1037, 382);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(151, 28);
+            this.buttonSave.Size = new System.Drawing.Size(201, 34);
             this.buttonSave.TabIndex = 19;
             this.buttonSave.Text = "Сохранить по умолчанию";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -113,9 +121,10 @@
             // checkBoxCompareTableWithTrigger
             // 
             this.checkBoxCompareTableWithTrigger.AutoSize = true;
-            this.checkBoxCompareTableWithTrigger.Location = new System.Drawing.Point(209, 19);
+            this.checkBoxCompareTableWithTrigger.Location = new System.Drawing.Point(279, 23);
+            this.checkBoxCompareTableWithTrigger.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxCompareTableWithTrigger.Name = "checkBoxCompareTableWithTrigger";
-            this.checkBoxCompareTableWithTrigger.Size = new System.Drawing.Size(134, 17);
+            this.checkBoxCompareTableWithTrigger.Size = new System.Drawing.Size(168, 21);
             this.checkBoxCompareTableWithTrigger.TabIndex = 3;
             this.checkBoxCompareTableWithTrigger.Text = "Сравнивать триггера";
             this.checkBoxCompareTableWithTrigger.UseVisualStyleBackColor = true;
@@ -126,9 +135,10 @@
             this.checkBoxCompareWithTable.AutoSize = true;
             this.checkBoxCompareWithTable.Checked = true;
             this.checkBoxCompareWithTable.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxCompareWithTable.Location = new System.Drawing.Point(6, 19);
+            this.checkBoxCompareWithTable.Location = new System.Drawing.Point(8, 23);
+            this.checkBoxCompareWithTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxCompareWithTable.Name = "checkBoxCompareWithTable";
-            this.checkBoxCompareWithTable.Size = new System.Drawing.Size(197, 17);
+            this.checkBoxCompareWithTable.Size = new System.Drawing.Size(253, 21);
             this.checkBoxCompareWithTable.TabIndex = 3;
             this.checkBoxCompareWithTable.Text = "Также сравнивать таблицы (beta)";
             this.checkBoxCompareWithTable.UseVisualStyleBackColor = true;
@@ -137,29 +147,32 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(389, 92);
+            this.label3.Location = new System.Drawing.Point(519, 113);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(258, 13);
+            this.label3.Size = new System.Drawing.Size(334, 17);
             this.label3.TabIndex = 2;
             this.label3.Text = "Список игнорируемых окончаний, в т.ч. триггера:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 92);
+            this.label2.Location = new System.Drawing.Point(8, 113);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(261, 13);
+            this.label2.Size = new System.Drawing.Size(335, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "Список игнорируемых префиксов, в т.ч. триггера:";
             // 
             // textBoxIPost
             // 
             this.textBoxIPost.Font = new System.Drawing.Font("Courier New", 9.75F);
-            this.textBoxIPost.Location = new System.Drawing.Point(392, 108);
+            this.textBoxIPost.Location = new System.Drawing.Point(523, 133);
+            this.textBoxIPost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxIPost.Multiline = true;
             this.textBoxIPost.Name = "textBoxIPost";
             this.textBoxIPost.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxIPost.Size = new System.Drawing.Size(380, 230);
+            this.textBoxIPost.Size = new System.Drawing.Size(505, 282);
             this.textBoxIPost.TabIndex = 1;
             this.textBoxIPost.WordWrap = false;
             this.textBoxIPost.TextChanged += new System.EventHandler(this.сompare_CheckedChanged);
@@ -167,11 +180,12 @@
             // textBoxIPref
             // 
             this.textBoxIPref.Font = new System.Drawing.Font("Courier New", 9.75F);
-            this.textBoxIPref.Location = new System.Drawing.Point(6, 108);
+            this.textBoxIPref.Location = new System.Drawing.Point(8, 133);
+            this.textBoxIPref.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxIPref.Multiline = true;
             this.textBoxIPref.Name = "textBoxIPref";
             this.textBoxIPref.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxIPref.Size = new System.Drawing.Size(380, 230);
+            this.textBoxIPref.Size = new System.Drawing.Size(505, 282);
             this.textBoxIPref.TabIndex = 1;
             this.textBoxIPref.WordWrap = false;
             this.textBoxIPref.TextChanged += new System.EventHandler(this.сompare_CheckedChanged);
@@ -179,27 +193,30 @@
             // textBoxPrefix
             // 
             this.textBoxPrefix.Font = new System.Drawing.Font("Courier New", 9.75F);
-            this.textBoxPrefix.Location = new System.Drawing.Point(8, 64);
+            this.textBoxPrefix.Location = new System.Drawing.Point(11, 79);
+            this.textBoxPrefix.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxPrefix.Name = "textBoxPrefix";
-            this.textBoxPrefix.Size = new System.Drawing.Size(764, 22);
+            this.textBoxPrefix.Size = new System.Drawing.Size(1017, 26);
             this.textBoxPrefix.TabIndex = 1;
             this.textBoxPrefix.TextChanged += new System.EventHandler(this.сompare_CheckedChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 48);
+            this.label1.Location = new System.Drawing.Point(8, 59);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(513, 13);
+            this.label1.Size = new System.Drawing.Size(664, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Объект начинается с:  (здесь и ниже скобки [ ] обязательно должны быть, можно исп" +
     "ользовать %)";
             // 
             // butAddConStr
             // 
-            this.butAddConStr.Location = new System.Drawing.Point(549, 14);
+            this.butAddConStr.Location = new System.Drawing.Point(732, 17);
+            this.butAddConStr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.butAddConStr.Name = "butAddConStr";
-            this.butAddConStr.Size = new System.Drawing.Size(226, 23);
+            this.butAddConStr.Size = new System.Drawing.Size(301, 28);
             this.butAddConStr.TabIndex = 0;
             this.butAddConStr.Text = "Добавить базу вручную";
             this.butAddConStr.UseVisualStyleBackColor = true;
@@ -207,18 +224,30 @@
             // 
             // butTest
             // 
-            this.butTest.Location = new System.Drawing.Point(483, 14);
+            this.butTest.Location = new System.Drawing.Point(644, 17);
+            this.butTest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.butTest.Name = "butTest";
-            this.butTest.Size = new System.Drawing.Size(60, 23);
+            this.butTest.Size = new System.Drawing.Size(80, 28);
             this.butTest.TabIndex = 0;
             this.butTest.Text = "Тест";
             this.butTest.UseVisualStyleBackColor = true;
             this.butTest.Visible = false;
             this.butTest.Click += new System.EventHandler(this.butTest_Click);
             // 
+            // cbPostGreSql
+            // 
+            this.cbPostGreSql.AutoSize = true;
+            this.cbPostGreSql.Location = new System.Drawing.Point(455, 23);
+            this.cbPostGreSql.Margin = new System.Windows.Forms.Padding(4);
+            this.cbPostGreSql.Name = "cbPostGreSql";
+            this.cbPostGreSql.Size = new System.Drawing.Size(102, 21);
+            this.cbPostGreSql.TabIndex = 20;
+            this.cbPostGreSql.Text = "PostGreSql";
+            this.cbPostGreSql.UseVisualStyleBackColor = true;
+            // 
             // UtilsView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBoxComp1);
             this.Controls.Add(this.checkBoxDBsFromMSWithBase);
@@ -226,8 +255,9 @@
             this.Controls.Add(this.butTest);
             this.Controls.Add(this.butAddConStr);
             this.Controls.Add(this.butDBsFromMS);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UtilsView";
-            this.Size = new System.Drawing.Size(1000, 550);
+            this.Size = new System.Drawing.Size(1333, 677);
             this.groupBoxComp1.ResumeLayout(false);
             this.groupBoxComp1.PerformLayout();
             this.ResumeLayout(false);
@@ -252,5 +282,6 @@
         private System.Windows.Forms.CheckBox checkBoxCompareTableWithTrigger;
         private System.Windows.Forms.Button butAddConStr;
         private System.Windows.Forms.Button butTest;
+        private System.Windows.Forms.CheckBox cbPostGreSql;
     }
 }

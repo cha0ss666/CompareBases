@@ -115,6 +115,7 @@
     <Compile Include="DAL\DALPostgreSQL.cs" />
     <Compile Include="Model\ConnectionString.cs" />
     <Compile Include="DAL\DALSql.cs" />
+    <Compile Include="Model\ISqlScript.cs" />
     <Compile Include="Model\SQLObject.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

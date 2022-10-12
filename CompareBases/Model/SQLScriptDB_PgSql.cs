@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompareBases.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,21 +7,22 @@ using System.Threading.Tasks;
 
 namespace CompareBases
 {
-    public class SQLScriptDB_PgSql
+    public class SQLScriptDB_PgSql : ISqlScript
     {
-        public bool WithTable;
-        public bool TableWithTrigger;
-        public string FilterPrefix;
-        public List<string> FilterIgnoreByPrefix;
-        public List<string> FilterIgnoreByPostfix;
+        public bool WithTable { get; set; }
+        public bool TableWithTrigger { get; set; }
+        public string FilterPrefix { get; set; }
+        public List<string> FilterIgnoreByPrefix { get; set; }
+        public List<string> FilterIgnoreByPostfix { get; set; }
 
         public string GetScriptCountObjects()
         {
             return GetScriptPrepareWhere() + @"
-select count(1)
-from sys.objects so 
-	inner join sys.schemas ss on so.schema_id = ss.schema_id
-	--left join sys.sql_modules sm on sm.object_id = so.object_id
+--процедуры/функции
+select cast(count(1) as int)
+from pg_proc p
+left join pg_namespace n on n.oid = p.pronamespace
+cross join lateral (select '[' || n.nspname || '].[' || p.proname || ']' as name, n.nspname as schemaname) obj
 " + GetScriptWhere();
         }
 

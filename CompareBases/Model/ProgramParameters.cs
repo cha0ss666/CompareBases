@@ -21,6 +21,7 @@ namespace CompareBases.Model
         public string SVNCommandLog;
         public bool CompareWithTable = true;
         public bool CompareTableWithTrigger = true;
+        public bool PostGreSql = false;
         public bool ShowTableFirst = true;
         public bool ShowSortType = true;
 

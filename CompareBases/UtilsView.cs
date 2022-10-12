@@ -40,6 +40,7 @@ namespace CompareBases
             param_Change_run = true;
             checkBoxCompareWithTable.Checked = Settings.Param.CompareWithTable;
             checkBoxCompareTableWithTrigger.Checked = Settings.Param.CompareTableWithTrigger;
+            cbPostGreSql.Checked = Settings.Param.PostGreSql;
             textBoxPrefix.Text = Settings.Param.Prefix;
             textBoxIPref.Text = string.Join(Environment.NewLine, Settings.Param.IgnoreByPrefix);
             textBoxIPost.Text = string.Join(Environment.NewLine, Settings.Param.IgnoreByPostfix);
@@ -53,6 +54,7 @@ namespace CompareBases
             //Применение настроек и синхронизация
             Settings.Param.CompareWithTable = checkBoxCompareWithTable.Checked;
             Settings.Param.CompareTableWithTrigger = checkBoxCompareTableWithTrigger.Checked;
+            Settings.Param.PostGreSql = cbPostGreSql.Checked;
             Settings.Param.Prefix = textBoxPrefix.Text.Trim();
             Settings.Param.IgnoreByPrefix = new List<string>(textBoxIPref.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries));
             Settings.Param.IgnoreByPostfix = new List<string>(textBoxIPost.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries));

@@ -1,4 +1,5 @@
 ﻿using CompareBases.DAL;
+using CompareBases.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -56,10 +57,20 @@ namespace CompareBases
             {
                 try
                 {
-                    DALSql.SetConnectionString(cs.Value);
-                    DataTable sqlResultCount = DALSql.ExecuteDataTable(
+                    if (Settings.Param.PostGreSql)
+                    {
+                        DALPostgreSQL.SetConnectionString(cs.Value);
+                        DataTable sqlResultCount = DALPostgreSQL.ExecuteDataTable(
                         "select '123'", null);
-                    if ((string)sqlResultCount.Rows[0][0] != "123") testFail += cs.Key + ", ";
+                        if ((string)sqlResultCount.Rows[0][0] != "123") testFail += cs.Key + ", ";
+                    }
+                    else
+                    {
+                        DALSql.SetConnectionString(cs.Value);
+                        DataTable sqlResultCount = DALSql.ExecuteDataTable(
+                            "select '123'", null);
+                        if ((string)sqlResultCount.Rows[0][0] != "123") testFail += cs.Key + ", ";
+                    }
                 }
                 catch (Exception e)
                 {
@@ -160,7 +171,7 @@ namespace CompareBases
             {
                 listO = GetListBaseObjects(BaseConnectionString[db]);
             }
-            catch
+            catch(Exception ex)
             {
                 try
                 {
@@ -203,17 +214,39 @@ namespace CompareBases
             }
             //запрос
             //if (OnStatusChange != null) OnStatusChange("Запрос к BD...", null);
-            DALSql.SetConnectionString(connectionString);
-            var srcs = new SQLScriptDB();
-            srcs.WithTable = Settings.Param.CompareWithTable;
-            srcs.TableWithTrigger = Settings.Param.CompareTableWithTrigger;
-            srcs.FilterPrefix = Settings.Param.Prefix;
-            srcs.FilterIgnoreByPrefix = Settings.Param.IgnoreByPrefix;
-            srcs.FilterIgnoreByPostfix = Settings.Param.IgnoreByPostfix;
-            
+            ISqlScript srcs;
+
+            if (Settings.Param.PostGreSql)
+            {
+                DALPostgreSQL.SetConnectionString(connectionString);
+                srcs = new SQLScriptDB_PgSql();
+                srcs.WithTable = Settings.Param.CompareWithTable;
+                srcs.TableWithTrigger = Settings.Param.CompareTableWithTrigger;
+                srcs.FilterPrefix = Settings.Param.Prefix;
+                srcs.FilterIgnoreByPrefix = Settings.Param.IgnoreByPrefix;
+                srcs.FilterIgnoreByPostfix = Settings.Param.IgnoreByPostfix;
+            }
+            else
+            {
+                DALSql.SetConnectionString(connectionString);
+                srcs = new SQLScriptDB();
+                srcs.WithTable = Settings.Param.CompareWithTable;
+                srcs.TableWithTrigger = Settings.Param.CompareTableWithTrigger;
+                srcs.FilterPrefix = Settings.Param.Prefix;
+                srcs.FilterIgnoreByPrefix = Settings.Param.IgnoreByPrefix;
+                srcs.FilterIgnoreByPostfix = Settings.Param.IgnoreByPostfix;
+            }
+
             //выясняем количество
-            DataTable sqlResultCount = DALSql.ExecuteDataTable(
-                srcs.GetScriptCountObjects(), null);
+            DataTable sqlResultCount;
+            if (Settings.Param.PostGreSql)
+            {
+                string cc = srcs.GetScriptCountObjects();
+                sqlResultCount = DALPostgreSQL.ExecuteDataTable(cc, null);
+            }
+            else
+                sqlResultCount = DALSql.ExecuteDataTable(srcs.GetScriptCountObjects(), null);
+
             int sqlCountRow = (int)sqlResultCount.Rows[0][0];
             int sqlCountRowReading = 0;
 
@@ -225,7 +258,7 @@ namespace CompareBases
                 {
                     sqlCountRowReading = sqlResult.Rows.Count;
                     Thread.Sleep(100);
-                    lock(ThreadGetListBaseObjectsStat)
+                    lock (ThreadGetListBaseObjectsStat)
                     {
                         if (sqlCountRow > 0)
                             ThreadGetListBaseObjectsStat[connectionString] = (sqlCountRowReading * 100 / sqlCountRow).ToString() + "%";
@@ -234,11 +267,16 @@ namespace CompareBases
             });
             thSqlReading.IsBackground = true;
             thSqlReading.Start();
-            
+
             //запускаем запрос
-            DALSql.ExecuteDataTable(
+            if (Settings.Param.PostGreSql)
+                DALPostgreSQL.ExecuteDataTable(
                 srcs.GetScriptDefinitionObjects()
                 , null, sqlResult);
+            else
+                DALSql.ExecuteDataTable(
+                    srcs.GetScriptDefinitionObjects()
+                    , null, sqlResult);
 
             //завершение считывания
             lock (ThreadGetListBaseObjectsStat)
@@ -246,7 +284,11 @@ namespace CompareBases
                 sqlCountRow = 0;
                 ThreadGetListBaseObjectsStat[connectionString] = "...";
             }
-            DALSql.CloseConnection();
+
+            if (Settings.Param.PostGreSql)
+                DALPostgreSQL.CloseConnection();
+            else
+                DALSql.CloseConnection();
 
             //маппинг
             List<SQLObject> listSQL = new List<SQLObject>();

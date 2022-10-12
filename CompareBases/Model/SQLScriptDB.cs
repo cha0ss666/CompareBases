@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompareBases.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace CompareBases
 {
-    public class SQLScriptDB
-    {
-        public bool WithTable;
-        public bool TableWithTrigger;
-        public string FilterPrefix;
-        public List<string> FilterIgnoreByPrefix;
-        public List<string> FilterIgnoreByPostfix;
+    public class SQLScriptDB : ISqlScript
+	{
+		public bool WithTable { get; set; }
+		public bool TableWithTrigger { get; set; }
+		public string FilterPrefix { get; set; }
+		public List<string> FilterIgnoreByPrefix { get; set; }
+		public List<string> FilterIgnoreByPostfix { get; set; }
 
         public string GetScriptCountObjects()
         {
